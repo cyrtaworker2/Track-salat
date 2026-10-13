@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>روضة الصلوات</title>
+
+  <meta name="theme-color" content="#07100e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="روضة الصلوات">
+
+  <!-- أيقونة الحديقة الخضراء SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310b981'/%3E%3Cstop offset='100%25' stop-color='%23059669'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='%2306231a'/%3E%3Cpath d='M50 82 V48 M50 48 C50 30 30 25 24 38 C20 48 35 58 50 48 Z M50 42 C50 24 70 19 76 32 C80 42 65 52 50 42 Z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='22' r='4' fill='%2334d399'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310b981'/%3E%3Cstop offset='100%25' stop-color='%23059669'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='%2306231a'/%3E%3Cpath d='M50 82 V48 M50 48 C50 30 30 25 24 38 C20 48 35 58 50 48 Z M50 42 C50 24 70 19 76 32 C80 42 65 52 50 42 Z' fill='none' stroke='url(%23g)' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='50' cy='22' r='4' fill='%2334d399'/%3E%3C/svg%3E">
+
+  <!-- PWA Manifest مدمج -->
+  <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D8%B1%D9%88%D8%B6%D8%A9%20%D8%A7%D9%84%D8%B5%D9%84%D9%88%D8%A7%D8%AA%22%2C%22short_name%22%3A%22%D8%A7%D9%84%D8%B5%D9%84%D9%88%D8%A7%D8%AA%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%2307100e%22%2C%22theme_color%22%3A%22%2307100e%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20100%20100'%253E%253Crect%20width%3D'100'%20height%3D'100'%20rx%3D'24'%20fill%3D'%2306231a'%2F%253E%253Cpath%20d%3D'M50%2082%20V48%20M50%2048%20C50%2030%2030%2025%2024%2038%20C20%2048%2035%2058%2050%2048%20Z%20M50%2042%20C50%2024%2070%2019%2076%2032%20C80%2042%2065%2052%2050%2042%20Z'%20fill%3D'none'%20stroke%3D'%2310b981'%20stroke-width%3D'6'%2F%253E%253C%2Fsvg%253E%22%2C%22sizes%22%3A%22192x192%20512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+
+  <style>
+    :root {
+      --bg: #07100e;
+      --card-bg: rgba(13, 29, 24, 0.8);
+      --card-border: rgba(52, 211, 153, 0.15);
+      --primary: #10b981;
+      --primary-light: #34d399;
+      --primary-glow: rgba(16, 185, 129, 0.3);
+      --accent: #38bdf8;
+      --text: #f0fdf4;
+      --subtext: #86a798;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg); color: var(--text); padding: 14px; display: flex; justify-content: center; min-height: 100vh; }
+    .app-container { width: 100%; max-width: 440px; display: flex; flex-direction: column; gap: 14px; }
+
+    /* شريط تثبيت PWA */
+    #installBanner {
+      display: none; background: linear-gradient(135deg, #10b981, #059669);
+      color: #022c22; padding: 12px 16px; border-radius: 14px; font-weight: 700;
+      justify-content: space-between; align-items: center; box-shadow: 0 4px 15px var(--primary-glow);
+    }
+    #installBanner button {
+      background: #022c22; color: #fff; border: none; padding: 6px 14px;
+      border-radius: 8px; font-weight: 700; cursor: pointer;
+    }
+
+    /* كرت التنبيهات الذكي Notify Me */
+    .notify-card {
+      background: rgba(16, 185, 129, 0.08); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .notify-row { display: flex; justify-content: space-between; align-items: center; }
+    .notify-title { font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .notify-badge { font-size: 0.75rem; background: rgba(52, 211, 153, 0.2); color: var(--primary-light); padding: 2px 8px; border-radius: 6px; }
+    .btn-notify-toggle {
+      background: var(--primary); color: #022c22; border: none; padding: 6px 12px;
+      border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+    }
+    .reminder-time-row {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: var(--subtext); border-top: 1px solid rgba(255,255,255,0.05); padding-top: 8px;
+    }
+    .reminder-time-row input[type="time"] {
+      background: rgba(0,0,0,0.3); border: 1px solid var(--card-border);
+      color: var(--text); padding: 4px 8px; border-radius: 6px; font-family: monospace; outline: none;
+    }
+
+    /* لوحة الإحصائيات */
+    .dashboard-card {
+      background: linear-gradient(135deg, #0e2920 0%, #071510 100%);
+      border-radius: 20px; padding: 20px; border: 1px solid var(--card-border);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5); text-align: center; position: relative; overflow: hidden;
+    }
+    .garden-badge {
+      display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 20px; padding: 4px 12px;
+      font-size: 0.8rem; color: var(--primary-light); margin-bottom: 8px; font-weight: 600;
+    }
+    .dash-label { font-size: 0.9rem; color: var(--subtext); font-weight: 500; }
+    .dash-number {
+      font-size: 2.8rem; font-weight: 800; color: #fff; margin: 4px 0;
+      letter-spacing: -1px; text-shadow: 0 0 20px var(--primary-glow);
+    }
+    .dash-sub { font-size: 0.85rem; color: var(--subtext); }
+
+    .progress-track {
+      height: 10px; background: rgba(0, 0, 0, 0.3); border-radius: 20px;
+      overflow: hidden; margin-top: 14px; border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .progress-fill {
+      height: 100%; width: 0%; background: linear-gradient(90deg, #10b981, #34d399);
+      border-radius: 20px; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* إجراء سريع: يوم كامل */
+    .quick-all-row {
+      display: flex; gap: 8px; justify-content: space-between; align-items: center;
+      background: rgba(16, 185, 129, 0.04); border: 1px dashed var(--card-border);
+      border-radius: 14px; padding: 10px 14px;
+    }
+    .quick-all-title { font-size: 0.85rem; font-weight: 600; color: var(--subtext); }
+    .btn-quick-day {
+      background: #0f3226; color: var(--primary-light); border: 1px solid rgba(52, 211, 153, 0.3);
+      padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 0.85rem; cursor: pointer;
+    }
+    .btn-quick-day:active { transform: scale(0.96); background: rgba(52, 211, 153, 0.2); }
+
+    /* بطاقات الصلوات */
+    .prayer-card {
+      background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border); border-radius: 18px; padding: 16px;
+      display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .prayer-card:focus-within { border-color: rgba(52, 211, 153, 0.4); }
+
+    .card-top { display: flex; justify-content: space-between; align-items: center; }
+    .card-name-wrap { display: flex; align-items: center; gap: 10px; }
+    .prayer-icon {
+      width: 38px; height: 38px; border-radius: 10px; display: flex;
+      align-items: center; justify-content: center; font-size: 1.15rem;
+      background: rgba(16, 185, 129, 0.1); border: 1px solid var(--card-border);
+    }
+    .prayer-title { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+    
+    .card-counts { text-align: left; }
+    .count-rem { font-size: 1.4rem; font-weight: 800; color: var(--primary-light); font-family: monospace; }
+    .count-tot { font-size: 0.75rem; color: var(--subtext); }
+
+    .mini-track { height: 4px; background: rgba(0,0,0,0.3); border-radius: 4px; overflow: hidden; }
+    .mini-fill { height: 100%; width: 0%; background: var(--primary); transition: width 0.3s; }
+
+    /* أزرار العمليات */
+    .btn-cluster { display: flex; gap: 8px; align-items: center; }
+    .btn-action-main {
+      flex: 2; background: linear-gradient(135deg, #10b981, #059669);
+      color: #022c22; font-weight: 700; font-size: 0.95rem; border: none;
+      padding: 11px 14px; border-radius: 12px; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; gap: 6px;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+    .btn-action-main:active { transform: scale(0.97); }
+
+    .btn-mini {
+      flex: 1; background: rgba(255, 255, 255, 0.04); color: var(--text);
+      border: 1px solid var(--card-border); padding: 11px 0; border-radius: 12px;
+      font-weight: 600; font-size: 0.85rem; cursor: pointer;
+    }
+    .btn-mini:active { transform: scale(0.95); background: rgba(52, 211, 153, 0.15); }
+    .btn-undo { color: var(--subtext); }
+
+    .note-box {
+      width: 100%; background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 8px 12px; color: var(--text); font-size: 0.85rem; outline: none;
+    }
+    .note-box:focus { border-color: var(--primary-light); }
+    .note-box::placeholder { color: #537568; }
+
+    /* تفاصيل الإعدادات */
+    details {
+      background: var(--card-bg); border-radius: 16px; border: 1px solid var(--card-border); padding: 14px;
+    }
+    summary { font-size: 0.9rem; font-weight: 600; color: var(--subtext); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::after { content: '▼'; font-size: 0.75rem; transition: transform 0.2s; }
+    details[open] summary::after { transform: rotate(180deg); }
+
+    .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .input-grp { display: flex; flex-direction: column; gap: 4px; font-size: 0.8rem; color: var(--subtext); }
+    .input-grp input {
+      background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: #fff;
+      padding: 8px; border-radius: 8px; font-size: 0.9rem; text-align: center; outline: none;
+    }
+    .btn-full {
+      grid-column: span 2; background: var(--primary); color: #022c22; font-weight: 700;
+      padding: 10px; border-radius: 10px; border: none; cursor: pointer; margin-top: 6px;
+    }
+    .backup-tools { display: flex; gap: 8px; margin-top: 10px; grid-column: span 2; }
+    .btn-tool {
+      flex: 1; background: #0e2920; color: var(--subtext); border: 1px solid var(--card-border);
+      padding: 8px; border-radius: 8px; font-size: 0.8rem; cursor: pointer;
+    }
+  
